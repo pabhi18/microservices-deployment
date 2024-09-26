@@ -12,7 +12,7 @@ FROM gcr.io/distroless/java17-debian12
 
 WORKDIR /app
 
-COPY --from=build /app/target/discovery-service-1.0.0.jar ./app.jar
+COPY --from=build /app/target/cart-service-1.0.0.jar ./app.jar
 
 EXPOSE 8083
 

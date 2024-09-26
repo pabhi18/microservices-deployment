@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    image: pabhi4881/micro-api-gateway:latest
+    ports:
+      - "8080:8080"
+  
+  cart-service:
+    build: ./cart-service
+    image: pabhi4881/micro-cart-service:latest
+    ports:
+      - "8083:8083"
+
+  discovery-service:
+    build: ./discovery-service
+    image: pabhi4881/micro-discovery-service:latest
+    ports:
+      - "8084:8084"
+  
+  inventory-service:
+    build: ./inventory-service
+    image: pabhi4881/micro-inventory-service:latest
+    ports:
+      - "8081:8081"
+
+  user-service:
+    build: ./user-service
+    image: pabhi4881/micro-user-service:latest
+    ports:
+      - "8082:8082"

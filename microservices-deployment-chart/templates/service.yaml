@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "microservices-deployment-chart.fullname" . }}
+  labels:
+    {{- include "microservices-deployment-chart.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.apigateway.port }}
+      targetPort: http
+      protocol: TCP
+      name: apigateway
+    - port: {{ .Values.service.cartservice.port }}
+      targetPort: http
+      protocol: TCP
+      name: cartservice
+    - port: {{ .Values.service.discoveryservice.port }}
+      targetPort: http
+      protocol: TCP
+      name: discoveryservice
+    - port: {{ .Values.service.inventoryservice.port }}
+      targetPort: http
+      protocol: TCP
+      name: inventoryservice
+    - port: {{ .Values.service.userservice.port }}
+      targetPort: http
+      protocol: TCP
+      name: userservice
+  selector:
+    {{- include "microservices-deployment-chart.selectorLabels" . | nindent 4 }}
